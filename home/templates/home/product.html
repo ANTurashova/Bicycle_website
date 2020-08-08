@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- MDB -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+{#    <!-- Bootstrap CSS -->#}
+{#    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">#}
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- MDB icon -->
+    <link rel="icon" href="{% static 'mdb/img/mdb-favicon.ico' %}" type="image/x-icon">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'mdb/css/bootstrap.min.css' %}">
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="{% static 'mdb/css/mdb.min.css' %}">
+
+    <style>
+        html, body, header, .carousel{height: 60vh;}
+        @media (max-width: 740px) { html, body, header, .carousel{height: 100vh;} }
+        @media (min-width: 800px) and (max-width: 850px) { html, body, header, .carousel{height: 100vh;} }
+    </style>
+
+    <title>Продукт</title>
+</head>
+<body>
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+        <div class="container">
+            <a href="/" class="navbar-brand waves-effect">
+                <strong class="blue-text">QWE</strong>
+            </a>
+            <button class="navbar-toggler" type="button"
+                    data-toggle="collapse" data-target="#navbarContent"
+                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a href="/" class="nav-link waves-effect">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link waves-effect">Товары</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link waves-effect">О нас</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link waves-effect">Блог</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav nav-flex-icons">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link waves-effect">
+                            <span class="badge blue z-depth-1 mr-1">13</span>
+                            <i class="fa fa-shopping-cart"></i>
+                            <span class="clearfix d-none d-sm-inline-block">Корзина</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="mt-5 pt-4">
+        <div class="container dark-grey-text mt-5">
+            <div class="row">
+                <!-- Фото -->
+                <div class="col-md-6 mb-4">
+                    <img src="https://hiper-power.com/upload/iblock/3a7/BF205_003.jpg"
+                            alt="Фото" class="img-fluid">
+                </div>
+                <!-- Кнопки категорий -->
+                <div class="col-md-6 mb-4">
+                    <div class="p-4">
+                        <div class="mb-3">
+                            <a href="#">
+                                <span class="badge purple mr-1">Категория 2</span>
+                            </a>
+                            <a href="#">
+                                <span class="badge blue mr-1">Новый!</span>
+                            </a>
+                            <a href="#">
+                                <span class="badge red mr-1">Ограниченное предложение</span>
+                            </a>
+                        </div>
+                        <p class="lead">
+                            <span class="mr-1">
+                                <del>64 990 ₽</del>
+                            </span>
+                            <span class="mr-1">
+                                58 990 ₽
+                            </span>
+                        </p>
+                        <p class="lead font-weight-bold">Описание</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium assumenda at aut autem beatae culpa, dolorum eligendi etor esse.</p>
+                        <form action="" class="d-flex justify-content-left">
+                            <input type="number" value="1" aria-label="Search" style="width: 100px;" class="form-control">
+                            <button type="submit" class="btn btn-primary btn-md my-0 p">Добавить в корзину
+                            <i class="fa fa-shopping-cart ml-1"></i>
+                            </button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <hr>
+        <div class="row d-flex justify-content-center">
+            <div class="text-center col-md-8">
+                <h4 class="my-4 h4">Дополнительная информация</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus accusantium alias aliquam, aperiam asperiores assumenda cupiditate dicta dolorem dolorum et ex labore maiores minima modi pariatur quas quia, quod sequi soluta tempore ullam velit vero voluptas voluptatum. Doloribus, id. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam, dignissimos dolor dolore ducimus earum harum labore laboriosam numquam provident, rerum sequi sit tempora ut voluptate! Exercitationem libero qui temporibus?</p>
+            </div>
+        </div>
+        <div class="row" style="margin-left: 20px; margin-right: 20px">
+            <div class="col-lg-4 col-md-12 mb-4">
+                <img src="https://5kwt.ru/images/Bike/feht-bajk-medved-2-0-skladnoj-750-2.jpg" alt="фото1" class="img-fluid">
+            </div>
+            <div class="col-lg-4 col-md-12 mb-4">
+                <img src="https://5kwt.ru/images/Bike/feht-bajk-medved-2-0-skladnoj-750-5.jpg" alt="фото2" class="img-fluid">
+            </div>
+            <div class="col-lg-4 col-md-12 mb-4">
+                <img src="https://5kwt.ru/images/Bike/feht-bajk-medved-2-0-skladnoj-750-6.jpg" alt="фото3" class="img-fluid">
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer page-footer text-center font-small mt-4">
+        <div class="pt-4">
+            <a href="#" role="button" class="btn btn-outline-white">QWERTY
+                <i class="fas fa-user-check ml-2"></i>
+            </a>
+            <a href="#" role="button" class="btn btn-outline-white">Кнопка
+                <i class="fa fa-graduation-cap ml-2"></i>
+            </a>
+        </div>
+        <hr class="my-4">
+        <div class="pb-4">
+            <a href="#">
+                <i class="fas fa-location-arrow mr-3"></i>
+            </a>
+            <a href="#">
+                <i class="fas fa-truck mr-3"></i>
+            </a>
+            <a href="#">
+                <i class="fab fa-vk mr-3"></i>
+            </a>
+            <a href="#">
+                <i class="fab fa-youtube mr-3"></i>
+            </a>
+            <a href="#">
+                <i class="fas fa-search-location mr-3"></i>
+            </a>
+        </div>
+        <div class="footer-copyright py-3">
+            Qwerty Shop Blog
+        </div>
+   </footer>
+
+{% block extrahead %}
+    {#<!-- Optional JavaScript -->#}
+    {#<!-- jQuery first, then Popper.js, then Bootstrap JS -->#}
+    {#<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>#}
+    {#<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>#}
+    {#<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>#}
+    <!-- jQuery -->
+    <script type="text/javascript" src="{% static 'mdb/js/jquery.min.js' %}"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="{% static 'mdb/js/popper.min.js' %}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{% static 'mdb/js/bootstrap.min.js' %}"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="{% static 'mdb/js/mdb.min.js' %}"></script>
+{% endblock extrahead %}
+</body>
+</html>
