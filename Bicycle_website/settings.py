@@ -15,20 +15,21 @@ SECRET_KEY = '#*_n#khy)jya*4kioveyn2$bnppoaxj-yksiqg!f=-4(e)%w2x'
 DEBUG = True
 # DEBUG = False
 
-# ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['annaturaszowa.myjino.ru']
+ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['annaturaszowa.myjino.ru']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'home',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'home',
 ]
 
 MIDDLEWARE = [

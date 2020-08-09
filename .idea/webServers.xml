@@ -2,8 +2,15 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="0574b28f-239a-41b6-9de1-aacb7b548b9b" name="Без db, media и static" url="http://annaturaszowa.myjino.ru">
-        <fileTransfer rootFolder="/home/users/a/annaturaszowa" accessType="SFTP" host="annaturaszowa.myjino.ru" port="22" sshConfigId="ab902f73-5980-4949-bdf5-bc8294189593" sshConfig="annaturaszowa@annaturaszowa.myjino.ru:22 password">
+      <webServer id="95eebd3a-8253-442a-9fde-1833c42f06a0" name="Всё" url="http://annaturaszowa.myjino.ru">
+        <fileTransfer rootFolder="/home/users/a/annaturaszowa" accessType="SFTP" host="annaturaszowa.myjino.ru" port="22" sshConfigId="25d74958-238e-44e5-a78a-f4b8513dea52" sshConfig="annaturaszowa@annaturaszowa.myjino.ru:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="6bf87933-f785-4977-a895-c7386e7034f6" name="Без static, media, db" url="http://annaturaszowa.myjino.ru/">
+        <fileTransfer rootFolder="/home/users/a/annaturaszowa" accessType="SFTP" host="annaturaszowa.myjino.ru" port="22" sshConfigId="25d74958-238e-44e5-a78a-f4b8513dea52" sshConfig="annaturaszowa@annaturaszowa.myjino.ru:22 password">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>

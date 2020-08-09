@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="Без db, media и static">
+  <component name="PublishConfigData" serverName="Всё">
     <serverData>
-      <paths name="Без db, media и static">
+      <paths name="Без static, media, db">
         <serverdata>
           <mappings>
             <mapping deploy="/projects/Bicycle/Bicycle_website" local="$PROJECT_DIR$" web="/" />
           </mappings>
           <excludedPaths>
-            <excludedPath local="true" path="$PROJECT_DIR$/db.sqlite3" />
-            <excludedPath local="true" path="$PROJECT_DIR$/.gitignore" />
-            <excludedPath local="true" path="$PROJECT_DIR$/media" />
             <excludedPath local="true" path="$PROJECT_DIR$/static" />
+            <excludedPath local="true" path="$PROJECT_DIR$/media" />
+            <excludedPath local="true" path="$PROJECT_DIR$/db.sqlite3" />
           </excludedPaths>
+        </serverdata>
+      </paths>
+      <paths name="Всё">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/projects/Bicycle/Bicycle_website" local="$PROJECT_DIR$" web="/" />
+          </mappings>
         </serverdata>
       </paths>
     </serverData>
