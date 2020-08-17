@@ -49,7 +49,6 @@ class Firm(models.Model):  # Actor
 class Product(models.Model):  # Movie
     """Продукт"""
     title = models.CharField("Название", max_length=100)
-    tagline = models.CharField("Подзаголовок", max_length=100, default='')
     description = models.TextField("Описание")
     cover_photo = models.ImageField("Обложка", upload_to="products/", blank=True)  # poster  # blank=True - сделать необязательное заполнение
     # year = models.PositiveSmallIntegerField("Дата выхода", default=2020)
@@ -82,7 +81,7 @@ class Product(models.Model):  # Movie
 class Photo(models.Model):  # MovieShots
     """Фирма"""
     title = models.CharField("Название", max_length=100)
-    description = models.TextField("Описание")
+    description = models.CharField("Описание", max_length=300)
     image = models.ImageField("Изображение", upload_to="photo/")
     product = models.ForeignKey(Product, verbose_name="Продукт", on_delete=models.CASCADE)  # movie
 

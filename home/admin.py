@@ -1,10 +1,34 @@
-# from django import forms
+from django import forms
 from django.contrib import admin
-# from django.utils.safestring import mark_safe
+from django.utils.safestring import mark_safe
 # from ckeditor_uploader.widgets import CKEditorUploadingWidget
 # from modeltranslation.admin import TranslationAdmin
-
 from .models import *
+
+
+@admin.register(ProductType)
+class ProductTypeAdmin(admin.ModelAdmin):  # CategoryAdmin
+    """Типы продуктов"""
+    list_display = ("id", "name", "url")
+    list_display_links = ("id", "name",)  # Поле, которое будет ссылкой
+
+
+class CommentInline(admin.TabularInline):
+    """На странице товара показывать комментарии"""
+    model = Comment
+    extra = 0
+    readonly_fields = ("name", "email")
+
+
+class PhotoInline(admin.TabularInline):  # MovieShotsInline
+    model = Photo
+    extra = 0
+    readonly_fields = ("get_image",)
+
+    def get_image(self, obj):
+        return mark_safe(f'<img src={obj.image.url} height="120"')
+
+    get_image.short_description = "Изображение"
 
 
 # class MovieAdminForm(forms.ModelForm):
@@ -16,70 +40,54 @@ from .models import *
 #         model = Movie
 #         fields = '__all__'
 
-admin.site.register(ProductType)
-# @admin.register(Category)
-# class CategoryAdmin(TranslationAdmin):
-#     """Категории"""
-#     list_display = ("name", "url")
-#     list_display_links = ("name",)
-#
-#
-# class ReviewInline(admin.TabularInline):
-#     """Отзывы на странице фильма"""
-#     model = Reviews
-#     extra = 1
-#     readonly_fields = ("name", "email")
-#
-#
-# class MovieShotsInline(admin.TabularInline):
-#     model = MovieShots
-#     extra = 1
-#     readonly_fields = ("get_image",)
-#
-#     def get_image(self, obj):
-#         return mark_safe(f'<img src={obj.image.url} width="100" height="110"')
-#
-#     get_image.short_description = "Изображение"
 
-admin.site.register(Product)
-# @admin.register(Movie)
-# class MovieAdmin(TranslationAdmin):
-#     """Фильмы"""
-#     list_display = ("title", "category", "url", "draft")
-#     list_filter = ("category", "year")
-#     search_fields = ("title", "category__name")
-#     inlines = [MovieShotsInline, ReviewInline]
-#     save_on_top = True
-#     save_as = True
-#     list_editable = ("draft",)
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):  # MoviesAdmin
+    """Продукты"""
+    list_display = ("title", "producttypes", "url", "draft")
+    list_filter = ("producttypes",)  # Фильтры
+    search_fields = ("title", "producttypes__name")  # Поиск
+    inlines = [PhotoInline, CommentInline]  # Встроенные классы
+    save_on_top = True  # Кнопки "удалить" и "сохранить" наверх
+    save_as = True  # Добавить кнопку "сохранить как новый объект"
+    list_editable = ("draft",)  # Редактировать "черновик" прям в списке продуктов
 #     actions = ["publish", "unpublish"]
 #     form = MovieAdminForm
-#     readonly_fields = ("get_image",)
-#     fieldsets = (
-#         (None, {
-#             "fields": (("title", "tagline"),)
-#         }),
-#         (None, {
-#             "fields": ("description", ("poster", "get_image"))
-#         }),
-#         (None, {
-#             "fields": (("year", "world_premiere", "country"),)
-#         }),
-#         ("Actors", {
-#             "classes": ("collapse",),
-#             "fields": (("actors", "directors", "genres", "category"),)
-#         }),
-#         (None, {
-#             "fields": (("budget", "fees_in_usa", "fess_in_world"),)
-#         }),
-#         ("Options", {
-#             "fields": (("url", "draft"),)
-#         }),
-#     )
-#
-#     def get_image(self, obj):
-#         return mark_safe(f'<img src={obj.poster.url} width="100" height="110"')
-#
+    readonly_fields = ("get_image",)  # Показать фото
+#     fields = (("firms", "categories"),)  # Покажет только firms и categories в строку
+    fieldsets = (
+        (None, {
+            "fields": ("title",)
+        }),
+        (None, {
+            "fields": (("price", "producttypes"),)
+        }),
+        # ("Категории", {
+        #     "classes": ("collapse",),
+        #     "fields": (("firms", "categories"),)
+        # }),
+        (None, {
+                "fields": (("firms", "categories"),)
+            }),
+        (None, {
+            "fields": ("description",)
+        }),
+        (None, {
+            "fields": (("country", "year",),)
+        }),
+        (None, {
+            "fields": (("cover_photo", "get_image"),)
+        }),
+        ("Настройки", {
+            "fields": (("url", "draft"),)
+        }),
+    )
+
+    def get_image(self, obj):  # Показать фото
+        return mark_safe(f'<img src={obj.cover_photo.url} height="110"')
+
+    get_image.short_description = "Обложка"  # Показать фото
+
 #     def unpublish(self, request, queryset):
 #         """Снять с публикации"""
 #         row_update = queryset.update(draft=True)
@@ -104,49 +112,42 @@ admin.site.register(Product)
 #     unpublish.short_description = "Снять с публикации"
 #     unpublish.allowed_permissions = ('change',)
 #
-#     get_image.short_description = "Постер"
-
-admin.site.register(Comment)
-# @admin.register(Reviews)
-# class ReviewAdmin(admin.ModelAdmin):
-#     """Отзывы к фильму"""
-#     list_display = ("name", "email", "parent", "movie", "id")
-#     readonly_fields = ("name", "email")
-
-admin.site.register(Category)
-# @admin.register(Genre)
-# class GenreAdmin(TranslationAdmin):
-#     """Жанры"""
-#     list_display = ("name", "url")
-
-admin.site.register(Firm)
-# @admin.register(Actor)
-# class ActorAdmin(TranslationAdmin):
-#     """Актеры"""
-#     list_display = ("name", "age", "get_image")
-#     readonly_fields = ("get_image",)
-#
-#     def get_image(self, obj):
-#         return mark_safe(f'<img src={obj.image.url} width="50" height="60"')
-#
-#     get_image.short_description = "Изображение"
-
-# admin.site.register(Rating)
-
-admin.site.register(Photo)
-# @admin.register(MovieShots)
-# class MovieShotsAdmin(TranslationAdmin):
-#     """Кадры из фильма"""
-#     list_display = ("title", "movie", "get_image")
-#     readonly_fields = ("get_image",)
-#
-#     def get_image(self, obj):
-#         return mark_safe(f'<img src={obj.image.url} width="50" height="60"')
-#
-#     get_image.short_description = "Изображение"
 
 
-# admin.site.register(RatingStar)
 
-# admin.site.site_title = "Django Movies"
-# admin.site.site_header = "Django Movies"
+
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):  #RewiesAdmin
+    """Комментарии"""
+    list_display = ("name", "email", "parent", "product", "id")
+    readonly_fields = ("name", "email")  # Скрыть от редактирования
+
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):  # GenreAdmin
+    """Жанры"""
+    list_display = ("name", "url")
+
+
+@admin.register(Firm)
+class FirmAdmin(admin.ModelAdmin):  # ActorAdmin
+    """Актеры"""
+    list_display = ("name", "description")
+
+
+@admin.register(Photo)
+class PhotoAdmin(admin.ModelAdmin):  # MovieShotsAdmin
+    """Фотографии к товарам"""
+    list_display = ("title", "product", "get_image")
+    readonly_fields = ("get_image",)
+    list_filter = ("product",)
+
+    def get_image(self, obj):
+        return mark_safe(f'<img src={obj.image.url} height="120"')
+
+    get_image.short_description = "Изображение"
+
+
+admin.site.site_title = "Администрирование"  # Название на начальной странице
+admin.site.site_header = "Администрирование"  # Название в обложке
