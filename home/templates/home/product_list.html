@@ -1,289 +1,172 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 {% load static %}
-<html lang="ru">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- MDB -->
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+{% block main %}
 
-{#    <!-- Bootstrap CSS -->#}
-{#    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">#}
-    <!-- Custom styles -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <!-- MDB icon -->
-    <link rel="icon" href="{% static 'mdb/img/mdb-favicon.ico' %}" type="image/x-icon">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-    <!-- Google Fonts Roboto -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="{% static 'mdb/css/bootstrap.min.css' %}">
-    <!-- Material Design Bootstrap -->
-    <link rel="stylesheet" href="{% static 'mdb/css/mdb.min.css' %}">
+<div id="carousel-ex" class="carousel slide carousel-fade" data-ride="carousel" style="padding-top: 50px;">
+    <ol class="carousel-indicators">
+        <li data-target="#carousel-ex" data-slide-to="0" class="active" ></li>
+        <li data-target="#carousel-ex" data-slide-to="1"></li>
+        <li data-target="#carousel-ex" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+            <div class="view">
+                <img class="d-block w-100" src="https://on-desktop.com/ru/images/wp.php?path=/wps/Creative_Wallpaper_Bicycle_075856_.jpg&wp=1"
+                        alt="First slide">
+                <div class="mask rgba-black-light"></div>
+            </div>
+            <div class="carousel-caption">
+                <h3 class="h3-responsive">Это текст</h3>
+                <p>Это тоже текст</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="view">
+                <img class="d-block w-100" src="https://s1.1zoom.ru/big0/165/347124-admin.jpg"
+                        alt="First slide">
+                <div class="mask rgba-black-light"></div>
+            </div>
+            <div class="carousel-caption">
+                <h3 class="h3-responsive">Это текст</h3>
+                <p>Это тоже текст</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="view">
+                <img class="d-block w-100" src="https://flashnord.com/sites/default/files/uploads/main/velosipedist.jpg"
+                        alt="First slide">
+                <div class="mask rgba-black-light"></div>
+            </div>
+            <div class="carousel-caption">
+                <h3 class="h3-responsive">Это текст</h3>
+                <p>Это тоже текст</p>
+            </div>
+        </div>
+    </div>
+    <a href="#carousel-ex" class="carousel-control-prev" role="button" data-slide="prev"> <!-- Кнопка влево -->
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Предыдущий</span>
+    </a>
+    <a href="#carousel-ex" class="carousel-control-next" role="button" data-slide="next"> <!-- Кнопка вправо -->
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Следующий</span>
+    </a>
+</div>
 
-    <style>
-        html, body, header, .carousel{height: 60vh;}
-        @media (max-width: 740px) { html, body, header, .carousel{height: 100vh;} }
-        @media (min-width: 800px) and (max-width: 850px) { html, body, header, .carousel{height: 100vh;} }
-    </style>
+<main>
+    <div class="container">
 
-    <title>Главная</title>
-</head>
-<body>
-
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
-        <div class="container">
-            <a href="#" class="navbar-brand waves-effect">
-                <strong class="blue-text">QWE</strong>
-            </a>
-            <button class="navbar-toggler" type="button"
-                    data-toggle="collapse" data-target="#navbarContent"
-                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 md-5">
+            <span class="navbar-brand">Категории:</span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nextNav"
+                    aria-controls="nextNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarContent">
+            <div class="collapse navbar-collapse" id="nextNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a href="#" class="nav-link waves-effect">Главная</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link waves-effect">Товары</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link waves-effect">О нас</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link waves-effect">Блог</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav nav-flex-icons">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link waves-effect">
-                            <span class="badge blue z-depth-1 mr-1">13</span>
-                            <i class="fa fa-shopping-cart"></i>
-                            <span class="clearfix d-none d-sm-inline-block">Корзина</span>
+                        <a href="#" class="nav-link">Все
+                            <span class="sr-only">(current)</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Катег1</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Катег2</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Катег3</a>
+                    </li>
                 </ul>
+                <form class="form-inline">
+                    <div class="md-form my-0">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                    </div>
+                </form>
             </div>
-        </div>
-    </nav>
-
-    <div id="carousel-ex" class="carousel slide carousel-fade" data-ride="carousel" style="padding-top: 50px;">
-        <ol class="carousel-indicators">
-            <li data-target="#carousel-ex" data-slide-to="0" class="active" ></li>
-            <li data-target="#carousel-ex" data-slide-to="1"></li>
-            <li data-target="#carousel-ex" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active">
-                <div class="view">
-                    <img class="d-block w-100" src="https://on-desktop.com/ru/images/wp.php?path=/wps/Creative_Wallpaper_Bicycle_075856_.jpg&wp=1"
-                            alt="First slide">
-                    <div class="mask rgba-black-light"></div>
-                </div>
-                <div class="carousel-caption">
-                    <h3 class="h3-responsive">Это текст</h3>
-                    <p>Это тоже текст</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="view">
-                    <img class="d-block w-100" src="https://s1.1zoom.ru/big0/165/347124-admin.jpg"
-                            alt="First slide">
-                    <div class="mask rgba-black-light"></div>
-                </div>
-                <div class="carousel-caption">
-                    <h3 class="h3-responsive">Это текст</h3>
-                    <p>Это тоже текст</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="view">
-                    <img class="d-block w-100" src="https://flashnord.com/sites/default/files/uploads/main/velosipedist.jpg"
-                            alt="First slide">
-                    <div class="mask rgba-black-light"></div>
-                </div>
-                <div class="carousel-caption">
-                    <h3 class="h3-responsive">Это текст</h3>
-                    <p>Это тоже текст</p>
-                </div>
-            </div>
-        </div>
-        <a href="#carousel-ex" class="carousel-control-prev" role="button" data-slide="prev"> <!-- Кнопка влево -->
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Предыдущий</span>
-        </a>
-        <a href="#carousel-ex" class="carousel-control-next" role="button" data-slide="next"> <!-- Кнопка вправо -->
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Следующий</span>
-        </a>
-    </div>
-
-    <main>
-        <div class="container">
-
-            <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 md-5">
-                <span class="navbar-brand">Категории:</span>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nextNav"
-                        aria-controls="nextNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="nextNav">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a href="#" class="nav-link">Все
-                                <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Катег1</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Катег2</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Катег3</a>
-                        </li>
-                    </ul>
-                    <form class="form-inline">
-                        <div class="md-form my-0">
-                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                        </div>
-                    </form>
-                </div>
-            </nav>
+        </nav>
 
 
 
-            <section class="text-center mb-4">
-                <div class="row">
+        <section class="text-center mb-4">
+            <div class="row">
 
-                    {% for product in product_list %}
-                        <div class="col-lg-3 col-md-6 mb-4">
-                            <div class="card">
-                                <div class="view overlay">
-                                    {% if product.cover_photo %}
-                                      <img src="{{ product.cover_photo.url }}" class="card-img-top" alt="{{ product.title }}">
-                                    {% endif %}
-                                    <a href="{% url 'product_detail' product.url %}"><div class="mask rgba-white-slight"></div></a>
-                                </div>
-                                <div class="card-body text-center">
-                                    <a href="{% url 'product_detail' product.url %}" class="grey-text">
-                                        <h5>{{ product.title }}</h5>
-                                    </a>
-                                    <h5>
-                                        <strong>
-                                            <a href="{% url 'product_detail' product.url %}" class="dark-grey-text">
-                                                {% for firm in product.firms.all %}
-                                                    {{ firm.name }}
-                                                {% endfor %}
-                                                {# <span class="badge badge-pill danger-color">Новинка!</span> #}
-                                            </a>
-                                        </strong>
-                                    </h5>
-                                    <h4 class="font-weight-bold blue-text">
-                                        <strong>{{ product.price }} ₽</strong>
-                                    </h4>
-                                </div>
+                {% for product in product_list %}
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="card">
+                            <div class="view overlay">
+                                {% if product.cover_photo %}
+                                  <img src="{{ product.cover_photo.url }}" class="card-img-top" alt="{{ product.title }}">
+                                {% endif %}
+                                <a href="{% url 'product_detail' product.url %}"><div class="mask rgba-white-slight"></div></a>
+                            </div>
+                            <div class="card-body text-center">
+                                <a href="{% url 'product_detail' product.url %}" class="grey-text">
+                                    <h5>{{ product.title }}</h5>
+                                </a>
+                                <h5>
+                                    <strong>
+                                        <a href="{% url 'product_detail' product.url %}" class="dark-grey-text">
+                                            {% for firm in product.firms.all %}
+                                                {{ firm.name }}
+                                            {% endfor %}
+                                            {# <span class="badge badge-pill danger-color">Новинка!</span> #}
+                                        </a>
+                                    </strong>
+                                </h5>
+                                <h4 class="font-weight-bold blue-text">
+                                    <strong>{{ product.price }} ₽</strong>
+                                </h4>
                             </div>
                         </div>
-                    {% endfor %}
+                    </div>
+                {% endfor %}
 
-                </div>
-            </section>
+            </div>
+        </section>
 
-            <nav class="d-flex justify-content-center">
-                <ul class="pagination pg-blue">
-                    <li class="page-item">
-                        <a href="#" class="page-link" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li class="page-item active">
-                        <a href="#" class="page-link" aria-label="Previous">
-                            <span aria-hidden="true">1</span>
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a href="#" class="page-link" aria-label="Previous">
-                            <span aria-hidden="true">2</span>
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a href="#" class="page-link" aria-label="Previous">
-                            <span aria-hidden="true">3</span>
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a href="#" class="page-link" aria-label="Previous">
-                            <span aria-hidden="true">4</span>
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a href="#" class="page-link" aria-label="Previous">
-                            <span aria-hidden="true">5</span>
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a href="#" class="page-link" aria-label="Previous">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+        <nav class="d-flex justify-content-center">
+            <ul class="pagination pg-blue">
+                <li class="page-item">
+                    <a href="#" class="page-link" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item active">
+                    <a href="#" class="page-link" aria-label="Previous">
+                        <span aria-hidden="true">1</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a href="#" class="page-link" aria-label="Previous">
+                        <span aria-hidden="true">2</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a href="#" class="page-link" aria-label="Previous">
+                        <span aria-hidden="true">3</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a href="#" class="page-link" aria-label="Previous">
+                        <span aria-hidden="true">4</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a href="#" class="page-link" aria-label="Previous">
+                        <span aria-hidden="true">5</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a href="#" class="page-link" aria-label="Previous">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
 
-        </div>
-    </main>
+    </div>
+</main>
 
-    <footer class="footer page-footer text-center font-small mt-4">
-        <div class="pt-4">
-            <a href="#" role="button" class="btn btn-outline-white">QWERTY
-                <i class="fas fa-user-check ml-2"></i>
-            </a>
-            <a href="#" role="button" class="btn btn-outline-white">Кнопка
-                <i class="fa fa-graduation-cap ml-2"></i>
-            </a>
-        </div>
-        <hr class="my-4">
-        <div class="pb-4">
-            <a href="#">
-                <i class="fas fa-location-arrow mr-3"></i>
-            </a>
-            <a href="#">
-                <i class="fas fa-truck mr-3"></i>
-            </a>
-            <a href="#">
-                <i class="fab fa-vk mr-3"></i>
-            </a>
-            <a href="#">
-                <i class="fab fa-youtube mr-3"></i>
-            </a>
-            <a href="#">
-                <i class="fas fa-search-location mr-3"></i>
-            </a>
-        </div>
-        <div class="footer-copyright py-3">
-            Qwerty Shop Blog
-        </div>
-   </footer>
-
-{% block extrahead %}
-{#<!-- Optional JavaScript -->#}
-{#<!-- jQuery first, then Popper.js, then Bootstrap JS -->#}
-{#<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>#}
-{#<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>#}
-{#<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>#}
-<!-- jQuery -->
-<script type="text/javascript" src="{% static 'mdb/js/jquery.min.js' %}"></script>
-<!-- Bootstrap tooltips -->
-<script type="text/javascript" src="{% static 'mdb/js/popper.min.js' %}"></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="{% static 'mdb/js/bootstrap.min.js' %}"></script>
-<!-- MDB core JavaScript -->
-<script type="text/javascript" src="{% static 'mdb/js/mdb.min.js' %}"></script>
-{% endblock extrahead %}
-</body>
-</html>
+{% endblock main %}

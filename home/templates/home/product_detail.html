@@ -1,117 +1,48 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 {% load static %}
-<html lang="ru">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- MDB -->
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+{% block main %}
 
-{#    <!-- Bootstrap CSS -->#}
-{#    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">#}
-    <!-- Custom styles -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <!-- MDB icon -->
-    <link rel="icon" href="{% static 'mdb/img/mdb-favicon.ico' %}" type="image/x-icon">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-    <!-- Google Fonts Roboto -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="{% static 'mdb/css/bootstrap.min.css' %}">
-    <!-- Material Design Bootstrap -->
-    <link rel="stylesheet" href="{% static 'mdb/css/mdb.min.css' %}">
-
-    <style>
-        html, body, header, .carousel{height: 60vh;}
-        @media (max-width: 740px) { html, body, header, .carousel{height: 100vh;} }
-        @media (min-width: 800px) and (max-width: 850px) { html, body, header, .carousel{height: 100vh;} }
-    </style>
-
-    <title>Продукт</title>
-</head>
-<body>
-
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
-        <div class="container">
-            <a href="/" class="navbar-brand waves-effect">
-                <strong class="blue-text">QWE</strong>
-            </a>
-            <button class="navbar-toggler" type="button"
-                    data-toggle="collapse" data-target="#navbarContent"
-                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a href="/" class="nav-link waves-effect">Главная</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link waves-effect">Товары</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link waves-effect">О нас</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link waves-effect">Блог</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav nav-flex-icons">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link waves-effect">
-                            <span class="badge blue z-depth-1 mr-1">13</span>
-                            <i class="fa fa-shopping-cart"></i>
-                            <span class="clearfix d-none d-sm-inline-block">Корзина</span>
-                        </a>
-                    </li>
-                </ul>
+<main class="mt-5 pt-4">
+    <div class="container dark-grey-text mt-5">
+        <div class="row">
+            <!-- Фото -->
+            <div class="col-md-6 mb-4">
+                {% if product.cover_photo %}
+                  <img src="{{ product.cover_photo.url }}" alt="{{ product.title }}" class="img-fluid">
+                {% endif %}
             </div>
-        </div>
-    </nav>
-
-    <main class="mt-5 pt-4">
-        <div class="container dark-grey-text mt-5">
-            <div class="row">
-                <!-- Фото -->
-                <div class="col-md-6 mb-4">
-                    {% if product.cover_photo %}
-                      <img src="{{ product.cover_photo.url }}" alt="{{ product.title }}" class="img-fluid">
-                    {% endif %}
-                </div>
-                <!-- Кнопки категорий -->
-                <div class="col-md-6 mb-4">
-                    <div class="p-4">
-                        <div class="mb-3">
-                            <a href="#">
-                                <span class="badge purple mr-1">Категория 2</span>
-                            </a>
-                            <a href="#">
-                                <span class="badge blue mr-1">Новый!</span>
-                            </a>
-                            <a href="#">
-                                <span class="badge red mr-1">Ограниченное предложение</span>
-                            </a>
-                        </div>
-                        <h4><b>{{ product.title }}</b></h4>
-                        <p class="lead">
+            <!-- Кнопки категорий -->
+            <div class="col-md-6 mb-4">
+                <div class="p-4">
+                    <div class="mb-3">
+                        <a href="#">
+                            <span class="badge purple mr-1">Категория 2</span>
+                        </a>
+                        <a href="#">
+                            <span class="badge blue mr-1">Новый!</span>
+                        </a>
+                        <a href="#">
+                            <span class="badge red mr-1">Ограниченное предложение</span>
+                        </a>
+                    </div>
+                    <h4><b>{{ product.title }}</b></h4>
+                    <p class="lead">
 {#                            <span class="mr-1">#}
 {#                                <del>164 990 ₽</del>#}
 {#                            </span>#}
-                            <span class="mr-1">
-                                <b>{{ product.price }} ₽</b>
-                            </span>
-                        </p>
+                        <span class="mr-1">
+                            <b>{{ product.price }} ₽</b>
+                        </span>
+                    </p>
 {#                        <p class="lead font-weight-bold">Описание</p>#}
-                        <ul>
-                            <li>
-                                <span><b>Фирма:</b>
-                                    {% for firm in product.firms.all %}
-                                        {{ firm.name }}
-                                    {% endfor %}
-                                </span>
-                            </li>
+                    <ul>
+                        <li>
+                            <span><b>Фирма:</b>
+                                {% for firm in product.firms.all %}
+                                    {{ firm.name }}
+                                {% endfor %}
+                            </span>
+                        </li>
 {#                            <li>#}
 {#                                <span><b>Тип:</b>#}
 {#                                    {% for ProductType in product.producttypes.all %}#}
@@ -119,95 +50,131 @@
 {#                                    {% endfor %}#}
 {#                                </span>#}
 {#                            </li>#}
-                            <li>
-                                <span><b>Категория:</b>
-                                    {% for category in product.categories.all %}
-                                        {{ category.name }}
-                                    {% endfor %}
-                                </span>
-                            </li>
-                            <li><b>Страна:</b> {{ product.country }}</li>
-                            <li><b>Время публикации:</b> {{ product.year }}</li>
-                        </ul>
+                        <li>
+                            <span><b>Категория:</b>
+                                {% for category in product.categories.all %}
+                                    {{ category.name }}
+                                {% endfor %}
+                            </span>
+                        </li>
+                        <li><b>Страна:</b> {{ product.country }}</li>
+                        <li><b>Время публикации:</b> {{ product.year }}</li>
+                    </ul>
 
-                        <form action="" class="d-flex justify-content-left">
-                            <input type="number" value="1" aria-label="Search" style="width: 100px;" class="form-control">
-                            <button type="submit" class="btn btn-primary btn-md my-0 p">Добавить в корзину
-                            <i class="fa fa-shopping-cart ml-1"></i>
-                            </button>
+                    <form action="" class="d-flex justify-content-left">
+                        <input type="number" value="1" aria-label="Search" style="width: 100px;" class="form-control">
+                        <button type="submit" class="btn btn-primary btn-md my-0 p">Добавить в корзину
+                        <i class="fa fa-shopping-cart ml-1"></i>
+                        </button>
 
-                        </form>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <hr>
+    <div class="row d-flex justify-content-center">
+        <div class="text-center col-md-8">
+            <h4 class="my-4 h4">Дополнительная информация</h4>
+            <p>{{ product.description }}</p>
+        </div>
+
+        <div class="justify-content-center" style="max-width: 650px">
+            {% for image in product.photo_set.all %}
+                <img style="display: block; height: auto; max-width: 100%;"
+                        src="{{ image.image.url }}" alt="{{ image.description }}">
+                <br>
+            {% endfor %}
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row justify-content-center">
+
+        <!-- Форма для отправки комментариев -->
+        <div class="single-form-left">
+            <div class="contact-single" style=" width: 90%;">
+                <h3 class="editContent" style="outline: none; cursor: inherit;">
+                    Оставить отзыв
+                </h3>
+                <form action="{% url 'add_comment' product.id %}" method="post"
+                      class="mt-4" id="formComment"> <!-- При написании ответа на коммент добавили сюда атрибут id -->
+                    {% csrf_token %}  <!-- добавляем CSRF token защиты -->
+                    <input type="hidden" name="parent" id="contactparent" value="">  <!-- Добавим поле для ввода, тип скрытый, здесь будем передавать id родительского отзыва -->
+                    <div class="form-group editContent" style="outline: none; cursor: inherit;">
+                        <label for="contactcomment" class="editContent" style="outline: none; cursor: inherit;">
+                            Ваш комментарий *
+                        </label>
+                        <textarea class="form-control border" rows="5" id="contactcomment" required="" name="text"></textarea>
                     </div>
+                    <div class="d-sm-flex">
+                        <div class="col-sm-6 form-group p-0 editContent" style="outline: none; cursor: inherit;">
+                            <label for="contactusername" class="editContent" style="outline: none; cursor: inherit;">
+                                Имя *
+                            </label>
+                            <input type="text" class="form-control border" id="contactusername" required="" name="name">
+                        </div>
+                        <div class="col-sm-6 form-group ml-sm-3 editContent" style="outline: none; cursor: inherit;">
+                            <label for="contactemail" class="editContent" style="outline: none; cursor: inherit;">
+                                Email *
+                            </label>
+                            <input type="email" class="form-control border" id="contactemail" required="" name="email">
+                        </div>
+                    </div>
+                    <button type="submit" class="mt-3 btn btn-success btn-block py-3" style="outline: none; cursor: inherit;">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </div>
+        <!-- // Форма для отправки комментариев -->
+
+        <!-- Комментарии -->
+        {% for comment in product.get_comment %}  <!-- Метод movie.get_review лежит в models.py -->
+            <div class="media py-5 px-4" style=" width: 80%;">
+                <img src="{% static 'img/man.jpg' %}" class="mr-3 img-fluid" alt="image" style="outline: none; cursor: inherit;">
+                <div class="media-body mt-4">
+                    <h5 class="mt-0 editContent" style="outline: none; cursor: inherit;">
+                        {{ comment.name }}
+                    </h5>
+                    <p class="mt-2 editContent" style="outline: none; cursor: inherit;">
+                        {{ comment.text }}
+                    </p>
+                    <a href="#formComment" onclick="addComment('{{ comment.name }}', '{{ comment.id }}')">Ответить</a>  <!-- #formReview - id формы, при клике на ссылку будет подниматься к форме отправки отзыва. addReview = передадим имя и id пользователя, которому отвечаем -->
+                    <!-- Вложенные омментарии -->
+                    {% for comm in comment.comment_set.all %}
+                        <div class="media mt-5 editContent" style="outline: none; cursor: inherit;">
+                            <a class="pr-3" href="#">
+                                <img src="{% static 'img/woman.jpg' %}" class="img-fluid " alt="image" style="outline: none; cursor: inherit;">
+                            </a>
+                            <div class="media-body">
+                                <h5 class="mt-0 editContent" style="outline: none; cursor: inherit;">
+                                    {{ comm.name }}
+                                </h5>
+                                <p class="mt-2 editContent" style="outline: none; cursor: inherit;">
+                                    {{ comm.text }}
+                                </p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <!-- // Вложенные комментарии -->
                 </div>
             </div>
 
-        </div>
-        <hr>
-        <div class="row d-flex justify-content-center">
-            <div class="text-center col-md-8">
-                <h4 class="my-4 h4">Дополнительная информация</h4>
-                <p>{{ product.description }}</p>
-            </div>
-        </div>
-        <div class="row" style="margin-left: 20px; margin-right: 20px">
-            <div class="col-lg-4 col-md-12 mb-4">
-                <img src="https://5kwt.ru/images/Bike/feht-bajk-medved-2-0-skladnoj-750-2.jpg" alt="фото1" class="img-fluid">
-            </div>
-            <div class="col-lg-4 col-md-12 mb-4">
-                <img src="https://5kwt.ru/images/Bike/feht-bajk-medved-2-0-skladnoj-750-5.jpg" alt="фото2" class="img-fluid">
-            </div>
-            <div class="col-lg-4 col-md-12 mb-4">
-                <img src="https://5kwt.ru/images/Bike/feht-bajk-medved-2-0-skladnoj-750-6.jpg" alt="фото3" class="img-fluid">
-            </div>
-        </div>
-    </main>
+        {% endfor %}
+        <!-- // Комментарии -->
 
-    <footer class="footer page-footer text-center font-small mt-4">
-        <div class="pt-4">
-            <a href="#" role="button" class="btn btn-outline-white">QWERTY
-                <i class="fas fa-user-check ml-2"></i>
-            </a>
-            <a href="#" role="button" class="btn btn-outline-white">Кнопка
-                <i class="fa fa-graduation-cap ml-2"></i>
-            </a>
-        </div>
-        <hr class="my-4">
-        <div class="pb-4">
-            <a href="#">
-                <i class="fas fa-location-arrow mr-3"></i>
-            </a>
-            <a href="#">
-                <i class="fas fa-truck mr-3"></i>
-            </a>
-            <a href="#">
-                <i class="fab fa-vk mr-3"></i>
-            </a>
-            <a href="#">
-                <i class="fab fa-youtube mr-3"></i>
-            </a>
-            <a href="#">
-                <i class="fas fa-search-location mr-3"></i>
-            </a>
-        </div>
-        <div class="footer-copyright py-3">
-            Qwerty Shop Blog
-        </div>
-   </footer>
+    </div>
 
-{% block extrahead %}
-    {#<!-- Optional JavaScript -->#}
-    {#<!-- jQuery first, then Popper.js, then Bootstrap JS -->#}
-    {#<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>#}
-    {#<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>#}
-    {#<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>#}
-    <!-- jQuery -->
-    <script type="text/javascript" src="{% static 'mdb/js/jquery.min.js' %}"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="{% static 'mdb/js/popper.min.js' %}"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="{% static 'mdb/js/bootstrap.min.js' %}"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="{% static 'mdb/js/mdb.min.js' %}"></script>
-{% endblock extrahead %}
-</body>
-</html>
+    <script>
+        function addComment(name, id) {  <!-- Функция принимает имя и id  -->
+            document.getElementById("contactparent").value = id;  <!-- По id находим на странице поле parent, в его атрибут value добляем id, который к нам пришел -->
+            document.getElementById("contactcomment").innerText = `${name}, `;  <!-- по id находим поле для отзыва и добавляем в него имя пользователя и запятую -->
+        }
+    </script>
+
+</main>
+
+{% endblock main %}

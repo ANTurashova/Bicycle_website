@@ -32,7 +32,6 @@
     <title>Продукт</title>
 </head>
 <body>
-
     <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
         <div class="container">
             <a href="/" class="navbar-brand waves-effect">
@@ -71,69 +70,9 @@
         </div>
     </nav>
 
-    <main class="mt-5 pt-4">
-        <div class="container dark-grey-text mt-5">
-            <div class="row">
-                <!-- Фото -->
-                <div class="col-md-6 mb-4">
-                    <img src="https://hiper-power.com/upload/iblock/3a7/BF205_003.jpg"
-                            alt="Фото" class="img-fluid">
-                </div>
-                <!-- Кнопки категорий -->
-                <div class="col-md-6 mb-4">
-                    <div class="p-4">
-                        <div class="mb-3">
-                            <a href="#">
-                                <span class="badge purple mr-1">Категория 2</span>
-                            </a>
-                            <a href="#">
-                                <span class="badge blue mr-1">Новый!</span>
-                            </a>
-                            <a href="#">
-                                <span class="badge red mr-1">Ограниченное предложение</span>
-                            </a>
-                        </div>
-                        <p class="lead">
-                            <span class="mr-1">
-                                <del>64 990 ₽</del>
-                            </span>
-                            <span class="mr-1">
-                                58 990 ₽
-                            </span>
-                        </p>
-                        <p class="lead font-weight-bold">Описание</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium assumenda at aut autem beatae culpa, dolorum eligendi etor esse.</p>
-                        <form action="" class="d-flex justify-content-left">
-                            <input type="number" value="1" aria-label="Search" style="width: 100px;" class="form-control">
-                            <button type="submit" class="btn btn-primary btn-md my-0 p">Добавить в корзину
-                            <i class="fa fa-shopping-cart ml-1"></i>
-                            </button>
+    {% block main %}
 
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <hr>
-        <div class="row d-flex justify-content-center">
-            <div class="text-center col-md-8">
-                <h4 class="my-4 h4">Дополнительная информация</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus accusantium alias aliquam, aperiam asperiores assumenda cupiditate dicta dolorem dolorum et ex labore maiores minima modi pariatur quas quia, quod sequi soluta tempore ullam velit vero voluptas voluptatum. Doloribus, id. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam, dignissimos dolor dolore ducimus earum harum labore laboriosam numquam provident, rerum sequi sit tempora ut voluptate! Exercitationem libero qui temporibus?</p>
-            </div>
-        </div>
-        <div class="row" style="margin-left: 20px; margin-right: 20px">
-            <div class="col-lg-4 col-md-12 mb-4">
-                <img src="https://5kwt.ru/images/Bike/feht-bajk-medved-2-0-skladnoj-750-2.jpg" alt="фото1" class="img-fluid">
-            </div>
-            <div class="col-lg-4 col-md-12 mb-4">
-                <img src="https://5kwt.ru/images/Bike/feht-bajk-medved-2-0-skladnoj-750-5.jpg" alt="фото2" class="img-fluid">
-            </div>
-            <div class="col-lg-4 col-md-12 mb-4">
-                <img src="https://5kwt.ru/images/Bike/feht-bajk-medved-2-0-skladnoj-750-6.jpg" alt="фото3" class="img-fluid">
-            </div>
-        </div>
-    </main>
+    {% endblock main %}
 
     <footer class="footer page-footer text-center font-small mt-4">
         <div class="pt-4">

@@ -6,6 +6,7 @@ from django.views.generic.base import View
 from django.views.generic import ListView, DetailView
 
 from .models import *
+from .forms import *
 
 
 # def home(request):
@@ -34,3 +35,21 @@ class ProductDetailView(DetailView):
     model = Product
     slug_field = "url"
     template_name = "home/product_detail.html"
+
+
+class AddComment(View):
+    """Отправка отзывов"""
+    def post(self, request, pk):
+    #     print(request.POST)  # Весь запрос в консоль
+        form = CommentForm(request.POST)
+        product = Product.objects.get(id=pk)
+        if form.is_valid():
+            # pass
+            form = form.save(commit=False)  # commit=False чтобы приостановить сохранение формы
+            if request.POST.get("parent", None):
+                form.parent_id = int(request.POST.get("parent"))
+
+            form.product = product
+            form.save()
+        return redirect(product.get_absolute_url())
+

@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import date
+from django.urls import reverse
 
 
 class ProductType(models.Model):  # Category
@@ -66,6 +67,12 @@ class Product(models.Model):  # Movie
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):  # Правильные url к продукту
+        return reverse("product_detail", kwargs={"slug": self.url})  # 1 аргумент - имя url, 2 - в словаре передать параметры, которые мы передаём в url
+
+    def get_comment(self):  # Вывести только родительские комменты
+        return self.comment_set.filter(parent__isnull=True)
 
     class Meta:
         verbose_name = "Продукт"
