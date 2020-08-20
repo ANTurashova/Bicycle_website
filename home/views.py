@@ -22,7 +22,12 @@ class ProductView(ListView):
     """Список велосипедов"""
     model = Product
     queryset = Product.objects.filter(draft=False)  # filter, чтобы не выводились черновики
-    template_name = "home/product_list.html"
+    template_name = "home/product_list.html"  # Не обязательно указывать
+
+    def get_context_data(self, *args, **kwargs):  # Чтобы в категориях в "все" выводить категории
+        context = super().get_context_data(*args, **kwargs)
+        context["categories"] = Category.objects.all()
+        return context
 
 
 # class ProductDetailView(View):
@@ -52,4 +57,3 @@ class AddComment(View):
             form.product = product
             form.save()
         return redirect(product.get_absolute_url())
-

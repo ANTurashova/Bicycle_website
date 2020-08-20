@@ -56,6 +56,7 @@
 <main>
     <div class="container">
 
+        <!-- Выбор категорий -->
         <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 md-5">
             <span class="navbar-brand">Категории:</span>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nextNav"
@@ -64,19 +65,38 @@
             </button>
             <div class="collapse navbar-collapse" id="nextNav">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a href="#" class="nav-link">Все
-                            <span class="sr-only">(current)</span>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Все
+{#                            <span class="sr-only">#}
+{#                                (current)#}
+{#                            </span>#}
+                        </a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                            {% for category in categories %}
+                                <a class="dropdown-item" href="#">{{ category.name }}</a>
+                            {% endfor %}
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            Горные
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Катег1</a>
+                        <a href="#" class="nav-link">
+                            Городские
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Катег2</a>
+                        <a href="#" class="nav-link">
+                            Складные
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Катег3</a>
+                        <a href="#" class="nav-link">
+                            Детские
+                        </a>
                     </li>
                 </ul>
                 <form class="form-inline">
@@ -86,7 +106,7 @@
                 </form>
             </div>
         </nav>
-
+        <!-- // Выбор категорий -->
 
 
         <section class="text-center mb-4">

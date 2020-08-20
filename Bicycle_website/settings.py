@@ -1,25 +1,18 @@
-from pathlib import Path
-
+# from pathlib import Path  # pip install pathlib
 import os
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
+#BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Quick-start development settings - unsuitable for production
+SECRET_KEY = 'f54g65xf56zbjn566sDgknsfFYKLK3256'
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'jfdxjes[sejvl;ahsdvhcvh,ey83294579f8ikcs'
+# DEBUG = True
+DEBUG = False
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = False
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['annaturaszowa.myjino.ru']
 
-ALLOWED_HOSTS = []
-# ALLOWED_HOSTS = ['annaturaszowa.myjino.ru']
-
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -63,17 +56,14 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Bicycle_website.wsgi.application'
 
 
-# Database
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
-
-# Password validation
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -91,9 +81,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/3.1/topics/i18n/
-
 LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'Europe/Moscow'
@@ -105,13 +92,10 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-
-
 STATIC_URL = '/static/'
-STATIC_DIR = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [STATIC_DIR]
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # Не включать на локалке
+STATIC_DIR = os.path.join(BASE_DIR, 'static')  # При STATIC_ROOT отключают
+STATICFILES_DIRS = [STATIC_DIR]  # При STATIC_ROOT отключают
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # Не включать на локалке. Для collectstatic
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

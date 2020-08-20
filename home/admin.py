@@ -51,8 +51,7 @@ class ProductAdmin(admin.ModelAdmin):  # MoviesAdmin
     save_on_top = True  # Кнопки "удалить" и "сохранить" наверх
     save_as = True  # Добавить кнопку "сохранить как новый объект"
     list_editable = ("draft",)  # Редактировать "черновик" прям в списке продуктов
-#     actions = ["publish", "unpublish"]
-#     form = MovieAdminForm
+    actions = ["publish", "unpublish"]  # Регистрация экшенов
     readonly_fields = ("get_image",)  # Показать фото
 #     fields = (("firms", "categories"),)  # Покажет только firms и categories в строку
     fieldsets = (
@@ -86,35 +85,31 @@ class ProductAdmin(admin.ModelAdmin):  # MoviesAdmin
     def get_image(self, obj):  # Показать фото
         return mark_safe(f'<img src={obj.cover_photo.url} height="110"')
 
+    def unpublish(self, request, queryset):
+        """Экшн - снять с публикации"""
+        row_update = queryset.update(draft=True)
+        if row_update == 1:
+            message_bit = "1 запись была обновлена"
+        else:
+            message_bit = f"{row_update} записей были обновлены"
+        self.message_user(request, f"{message_bit}")
+
+    def publish(self, request, queryset):
+        """Экшн - опубликовать"""
+        row_update = queryset.update(draft=False)
+        if row_update == 1:
+            message_bit = "1 запись была обновлена"
+        else:
+            message_bit = f"{row_update} записей были обновлены"
+        self.message_user(request, f"{message_bit}")
+
+    publish.short_description = "Опубликовать"  # Экшн - опубликовать
+    publish.allowed_permissions = ('change', )
+
+    unpublish.short_description = "Снять с публикации"  # Экшн - снять с публикации
+    unpublish.allowed_permissions = ('change',)
+
     get_image.short_description = "Обложка"  # Показать фото
-
-#     def unpublish(self, request, queryset):
-#         """Снять с публикации"""
-#         row_update = queryset.update(draft=True)
-#         if row_update == 1:
-#             message_bit = "1 запись была обновлена"
-#         else:
-#             message_bit = f"{row_update} записей были обновлены"
-#         self.message_user(request, f"{message_bit}")
-#
-#     def publish(self, request, queryset):
-#         """Опубликовать"""
-#         row_update = queryset.update(draft=False)
-#         if row_update == 1:
-#             message_bit = "1 запись была обновлена"
-#         else:
-#             message_bit = f"{row_update} записей были обновлены"
-#         self.message_user(request, f"{message_bit}")
-#
-#     publish.short_description = "Опубликовать"
-#     publish.allowed_permissions = ('change', )
-#
-#     unpublish.short_description = "Снять с публикации"
-#     unpublish.allowed_permissions = ('change',)
-#
-
-
-
 
 
 @admin.register(Comment)
